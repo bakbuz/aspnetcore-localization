@@ -1,0 +1,12 @@
+﻿@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<WebApplication.Resources.Shared> Localizer
+@{
+    ViewData["Title"] = Localizer["Menu_Privacy"];
+}
+
+<div class="text-center">
+    <h1 class="display-4">@WebApplication.Resources.Shared.Page_Privacy</h1>
+    <p>@Localizer["Page_Privacy"]</p>
+</div>
+
+

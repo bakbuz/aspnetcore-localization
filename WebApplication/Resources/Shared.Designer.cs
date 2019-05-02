@@ -61,11 +61,47 @@ namespace WebApplication.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Yerelleştirme.
+        ///   Looks up a localized string similar to Dil değiştir.
         /// </summary>
-        public static string Localization {
+        public static string ChangeLanguage {
             get {
-                return ResourceManager.GetString("Localization", resourceCulture);
+                return ResourceManager.GetString("ChangeLanguage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ana sayfa.
+        /// </summary>
+        public static string Menu_Home {
+            get {
+                return ResourceManager.GetString("Menu_Home", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gizlilik.
+        /// </summary>
+        public static string Menu_Privacy {
+            get {
+                return ResourceManager.GetString("Menu_Privacy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to AspNetCore ile Yerelleştirme.
+        /// </summary>
+        public static string Page_Home {
+            get {
+                return ResourceManager.GetString("Page_Home", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gizlilik sayfası.
+        /// </summary>
+        public static string Page_Privacy {
+            get {
+                return ResourceManager.GetString("Page_Privacy", resourceCulture);
             }
         }
     }

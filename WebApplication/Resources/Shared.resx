@@ -117,7 +117,19 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Localization" xml:space="preserve">
-    <value>Yerelleştirme</value>
+  <data name="ChangeLanguage" xml:space="preserve">
+    <value>Dil değiştir</value>
+  </data>
+  <data name="Menu_Home" xml:space="preserve">
+    <value>Ana sayfa</value>
+  </data>
+  <data name="Menu_Privacy" xml:space="preserve">
+    <value>Gizlilik</value>
+  </data>
+  <data name="Page_Home" xml:space="preserve">
+    <value>AspNetCore ile Yerelleştirme</value>
+  </data>
+  <data name="Page_Privacy" xml:space="preserve">
+    <value>Gizlilik sayfası</value>
   </data>
 </root>

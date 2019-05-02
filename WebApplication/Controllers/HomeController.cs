@@ -15,12 +15,13 @@ namespace WebApplication.Controllers
             return View();
         }
 
-        public IActionResult ChangeLanguage(string culture, string returnUrl)
+        public IActionResult Privacy()
         {
-            var cultureInfo = new CultureInfo(culture);
-            CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
-            CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
+            return View();
+        }
 
+        public IActionResult SetLanguage(string culture, string returnUrl)
+        {
             Response.Cookies.Append(
                 CookieRequestCultureProvider.DefaultCookieName,
                 CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(culture)),

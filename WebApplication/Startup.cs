@@ -47,6 +47,7 @@ namespace WebApplication
                     return new ProviderCultureResult(trCulture);
                 }));
             });
+            services.AddLocalization();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }

@@ -1,29 +1,27 @@
 ﻿@using Microsoft.AspNetCore.Builder
-@using Microsoft.AspNetCore.Localization
-@using Microsoft.AspNetCore.Mvc.Localization
 @using Microsoft.Extensions.Options
-@using Microsoft.Extensions.Localization
-
-@inject IStringLocalizer<WebApplication.Resources.Shared> Localizer
+@using Microsoft.AspNetCore.Localization
 @inject IOptions<RequestLocalizationOptions> LocalizationOptions
-
 @{
-    var requestCulture = Context.Features.Get<RequestCultureFeature>();
+    var currentCulture = this.Context.Request.Cookies[CookieRequestCultureProvider.DefaultCookieName];
     var cultureItems = LocalizationOptions.Value.SupportedUICultures
-        .Select(s => new SelectListItem { Value = s.Name, Text = s.DisplayName })
+        .Select(s => new SelectListItem
+        {
+            Value = s.Name,
+            Text = s.DisplayName,
+            Selected = currentCulture.Contains(s.Name)
+        })
         .ToList();
-
-    //var cultureItems = new List<SelectListItem>();
-    //cultureItems.Add(new SelectListItem { Value = "tr-TR", Text = "Türkçe" });
-    //cultureItems.Add(new SelectListItem { Value = "en-US", Text = "English" });
 }
 
-<div title="@Localizer["Request culture provider:"] @requestCulture?.Provider?.GetType().Name">
-    <form method="post" class="form-inline" asp-controller="Home" asp-action="ChangeLanguage" asp-route-returnUrl="@Context.Request.Path">
-        <span>@Localizer["Language"]: @requestCulture?.Provider?.GetType().Name</span>
-        <span>&nbsp;|&nbsp;</span>
-        <select name="culture" class="form-control form-control-sm" asp-for="@requestCulture.RequestCulture.UICulture.Name" asp-items="cultureItems"></select>
-        &nbsp;
-        <button type="submit" class="btn btn-sm btn-info">Dil değiştir</button>
-    </form>
+<div>
+    <select id="culture-selector" name="culture" class="form-control form-control-sm" asp-items="cultureItems" data-returnUrl="@Context.Request.Path"></select>
+    @*
+        <form method="post" class="form-inline" asp-controller="Home" asp-action="SetLanguage" asp-route-returnUrl="@Context.Request.Path">
+            <span>@currentCulture</span>
+            <select name="culture" class="form-control form-control-sm" asp-items="cultureItems"></select>
+            &nbsp;
+            <button type="submit" class="btn btn-sm btn-info">@WebApplication.Resources.Shared.ChangeLanguage</button>
+        </form>*@
+
 </div>

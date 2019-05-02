@@ -1,11 +1,10 @@
 ﻿@using Microsoft.Extensions.Localization
 @inject IStringLocalizer<WebApplication.Resources.Shared> Localizer
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = Localizer["Menu_Home"];
 }
 
 <div class="text-center">
-    <h1 class="display-4">@WebApplication.Resources.Shared.Localization</h1>
-    <p>@Localizer["Localization"]</p>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">@WebApplication.Resources.Shared.Page_Home</h1>
+    <p>@Localizer["Page_Home"]</p>
 </div>
