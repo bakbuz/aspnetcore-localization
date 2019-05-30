@@ -46,8 +46,7 @@ namespace WebApplication
                     // My custom request culture logic
                     return new ProviderCultureResult(trCulture);
                 }));
-            });
-            services.AddLocalization();
+            }).AddLocalization();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
