@@ -34,7 +34,7 @@ namespace WebApplication
         public void ConfigureServices(IServiceCollection services)
         {
 
-
+            // AddMvc'den önce olması gerek
             services.Configure<RequestLocalizationOptions>(options =>
             {
                 options.DefaultRequestCulture = new RequestCulture(culture: trCulture, uiCulture: trCulture);
