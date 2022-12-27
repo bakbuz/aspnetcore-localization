@@ -1,0 +1,30 @@
+﻿@using Microsoft.AspNetCore.Builder
+@using Microsoft.AspNetCore.Http.Features
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Options
+
+@inject IOptions<RequestLocalizationOptions> LocalizationOptions
+
+@{
+    var currentCulture = this.Context.Request.Cookies[CookieRequestCultureProvider.DefaultCookieName]; // tr|en|az
+    if (string.IsNullOrEmpty(currentCulture) || currentCulture == "c=undefined|uic=undefined")
+    {
+        currentCulture = LocalizationOptions.Value.DefaultRequestCulture.UICulture.Name;
+    }
+    var cultureItems = LocalizationOptions.Value.SupportedUICultures
+        .Select(s => new SelectListItem { Value = s.Name, Text = /*s.DisplayName*/ s.NativeName, Selected = currentCulture.Contains(s.Name) })
+        .ToList();
+
+    var returnUrl = string.IsNullOrEmpty(Context.Request.Path) ? "~/" : $"~{Context.Request.Path.Value}";
+}
+
+<div>
+    <div>Current Culture: @currentCulture</div>
+
+    <form id="selectLanguage" asp-controller="Home" asp-action="ChangeLanguage" asp-route-returnUrl="@returnUrl" method="post" class="form-horizontal" role="form">
+        <label>@WebApp.Resources.Shared.ResourceManager.GetString("Language"):</label>
+        <select name="culture" onchange="this.form.submit();" asp-items="cultureItems" class="form-select form-select-sm">
+        </select>
+    </form>
+</div>
