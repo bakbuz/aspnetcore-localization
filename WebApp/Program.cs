@@ -10,7 +10,7 @@ var localizationOptions = new RequestLocalizationOptions().SetDefaultCulture(sup
 
 var builder = WebApplication.CreateBuilder(args);
 
-//localization
+// Add ocalization
 builder.Services.Configure<RequestLocalizationOptions>(options =>
 {
     var supportedCultures = new[]
